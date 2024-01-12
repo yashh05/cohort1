@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let getRequestTimer;
+
+      function debounceGetSum() {
+        clearTimeout(getRequestTimer);
+        getRequestTimer = setTimeout(() => {
+          getSum();
+        }, 400);
+      }
+      function getSum() {
+        const num1 = document.getElementById("first-name");
+        const num2 = document.getElementById("second-name");
+        fetch("https://sum-server.100xdevs.com/sum?a=" + num1 + "&b=" + num2)
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+      }
+    </script>
+    <input oninput="getSum()" type="number" id="first-name" />
+    <input oninput="getSum()" type="number" id="second-name" />
+  </body>
+</html>

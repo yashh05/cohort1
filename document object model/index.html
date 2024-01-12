@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function formSubmit(e){
+            e.preventDefault()
+            var formElem=document.getElementById('form-id')
+            const firstName=formElem.elements[0].value;
+            const secondName=formElem.elements[1].value;
+            // const button=formElem.lements[2].value;
+            // console.log(firstName , secondName);
+            const newP=document.createElement('p');
+            newP.innerHTML='my name is ' + firstName + ' ' + secondName;
+            // console.log(newP);
+            document.body.appendChild(newP)
+        }
+    </script>
+    <div id="main">
+    <form action="" id="form-id" onsubmit="formSubmit(event)">
+     <input type="text" name="firstname">
+     <input type="text" name="lastname">
+     <button type="submit">submit</button>
+    </form>
+</div>
+</body>
+</html>

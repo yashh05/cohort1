@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var globalId=0;
+
+
+        function markAsDone(id){
+           const targetElement = document.getElementById(id);
+           targetElement.children[2].innerHTML="Done"
+        }
+        function createTodo(title,details,id){
+            const child=document.createElement("div");
+            child.id=id;
+            const titlePara=document.createElement("p")
+            const detailsPara=document.createElement("p");
+            const statusButton=document.createElement("button");
+            statusButton.innerHTML="Mark as done!"
+            statusButton.setAttribute("onClick","markAsDone("+id+")")
+            titlePara.innerHTML=title;            
+            detailsPara.innerHTML=details;
+
+             
+            child.appendChild(titlePara);
+            child.appendChild(detailsPara);
+            child.appendChild(statusButton)
+               
+            return child;
+            
+        }
+        function addTodo(){
+            const title=document.getElementById("title").value
+            const details=document.getElementById("content").value
+
+            const newTodo=createTodo(title,details,globalId++)
+            const ToDoSection = document.getElementById("main");
+            ToDoSection.appendChild(newTodo)
+        }
+    </script>
+    <div id="main">
+    <input type="text" name="title" id="title">
+    <input type="text" name="details" id="content">
+    <button onclick="addTodo()">Click here</button>
+    </div>
+    
+</body>
+</html>
