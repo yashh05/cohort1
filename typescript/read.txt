@@ -1,0 +1,25 @@
+we have 2 things- interfaces and types;
+They let you accumulate data of different types.
+
+interfaces can be- 
+  1. extended using "extends"
+  2. implemented by other classes;
+  3. can be used internally by other interafaces;
+  
+Types can be-
+  1. Cannot be extended.
+  2.useful for unions and ors.
+  3.needed to be equated  
+  4.cannot be implemented by classes
+  5.can use interfaces or types internally
+
+Enums-
+ 1. they are used when we know that the value is going to be one of the given options.
+ 2. better to use instead of type shape= "circle" | "square"
+ 3. automatically assigns some value(similar to index) to options in Enums.
+ syntax- enum Direction{
+    Up =1 , //if we assign some value it automatically increases the value of rest. else it starts from 0 as default
+    Down,
+    Left,
+    Right
+ }
