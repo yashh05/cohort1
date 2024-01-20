@@ -1,13 +1,15 @@
-import { atom } from "recoil"
+import { atom, selector } from "recoil"
 
+//this is how to use asynchronous data queries
 const notificationAtom = atom({
     key: "notificationAtom",
-    default: {
-        messages: 4,
-        jobs: 2,
-        network: 1,
-        notifications: 3
-    }
+    default: selector({
+        key: "notificationSelector",
+        get: async () => {
+            const response = await fetch("/api/notifications");
+            return response.data;
+        }
+    })
 })
 
 
