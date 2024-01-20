@@ -1,8 +1,8 @@
 
 import { RecoilRoot,useRecoilValue } from 'recoil'
 import './App.css'
-import { jobsAtom, messagesAtom, networkAtom, notificationAtom } from './atoms'
-import {  allNotification } from './selectors';
+import { notificationAtom } from './atoms'
+import {  allNotificationCountSelector } from './selectors';
 
 function App() {
   return (
@@ -14,19 +14,16 @@ function App() {
 
 function MainApp(){
 
-  const notification= useRecoilValue(notificationAtom);
-  const messages= useRecoilValue(messagesAtom);
-  const jobs= useRecoilValue(jobsAtom);
-  const network= useRecoilValue(networkAtom);
-  
-  const allCount=useRecoilValue(allNotification)
+  const notifications= useRecoilValue(notificationAtom);
+  const {network,jobs,messages,notification}=notifications
+  const allCount=useRecoilValue(allNotificationCountSelector)
   return(<>
   <button>Home</button>
       
       <button>My Network({network>=100 ? "99+":network })</button>
       <button>Jobs({jobs>=100 ? "99+":jobs })</button>
       <button>Messaging({messages>=100 ? "99+":messages })</button>
-      <button>Notifications({notification>=100 ? "99+":notification })</button>
+      <button>Notifications({notification>=100 ? "99+":notification }) </button>
 
       <button>Me({allCount})</button>
   </>)
